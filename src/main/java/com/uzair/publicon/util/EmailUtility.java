@@ -6,7 +6,7 @@ import jakarta.mail.internet.*;
 
 public class EmailUtility {
     public static void sendOTPEmail(String recipientEmail, String otp) {
-        String senderEmail = "spikyflame25@gmail.com";
+        String senderEmail = "youremail@email.com";
         String senderPassword = "kkdz svst kecj rjlc"; 
 
         Properties props = new Properties();
