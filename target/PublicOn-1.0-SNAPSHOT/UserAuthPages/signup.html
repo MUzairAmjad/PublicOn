@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../CSS/signup.css"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Sign Up | PublicOn</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+</head>
+
+<body>
+
+<!-- Background decoration -->
+<div class="background-glow glow-one"></div>
+<div class="background-glow glow-two"></div>
+
+<!-- Navigation -->
+<nav class="navbar">
+
+    <a href="../index.html" class="logo-area">
+        <img src="../Images/PB.png" alt="PublicOn Logo">
+        <span>PublicOn</span>
+    </a>
+
+    <a href="login.html" class="nav-login">
+        Sign In
+    </a>
+
+</nav>
+
+
+<!-- Main -->
+<main class="page-wrapper">
+
+    <section class="signup-card">
+        <!-- Header -->
+        <header class="form-header">
+
+            <div class="welcome-icon">
+                <span>❤︎</span>
+            </div>
+
+            <h1>Create your account</h1>
+
+            <p>
+                Join PublicOn and start connecting with everyone.
+            </p>
+
+        </header>
+
+
+        <!-- Form -->
+        <form
+            action="../SignupServlet"
+            method="post"
+            id="SignupForm"
+            novalidate>
+
+            <!-- Name -->
+            <div class="name-row">
+
+                <div class="input-field">
+
+                    <label for="fnInput">
+                        First Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="text"
+                            id="fnInput"
+                            name="FnIn"
+                            autocomplete="given-name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <div class="input-field">
+
+                    <label for="lnInput">
+                        Last Name
+                    </label>
+
+                    <div class="input-wrapper">
+
+                        <input
+                            type="text"
+                            id="lnInput"
+                            name="LnIn"
+                            autocomplete="family-name"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Email -->
+            <div class="input-field">
+
+                <label for="SignupEmailINP">
+                    Email Address
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+                        @
+                    </span>
+
+                    <input
+                        type="email"
+                        id="SignupEmailINP"
+                        name="SEmailIn"
+                        autocomplete="email"
+                        placeholder="you@example.com"
+                        required
+                    >
+
+                </div>
+
+            </div>
+            
+            <div class="input-field">
+
+                <label for="SignupHandleINP">
+                    Handle
+                </label>
+
+                <div class="input-wrapper">
+
+                    <span class="input-icon">
+                        #
+                    </span>
+
+                    <input
+                        type="text"
+                        id="SignupHandleINP"
+                        name="SHandleIn"
+                        placeholder="yournickname"
+                        required
+                    >
+
+                </div>
+                <!-- Red Error Message Container -->
+                <span id="handleError" style="color: #ff4d4d; font-size: 12px; margin-top: 5px; display: none;"></span>
+
+            </div>
+
+
+            <!-- Password -->
+            <div class="input-field">
+
+                <div class="label-row">
+
+                    <label for="SignupPassINP">
+                        Password
+                    </label>
+
+                    <span class="password-hint">
+                        8–20 characters
+                    </span>
+
+                </div>
+
+                <div class="input-wrapper">
+
+                    <input
+                        type="password"
+                        id="SignupPassINP"
+                        name="SPassIn"
+                        autocomplete="new-password"
+                        placeholder="Create a strong password"
+                        minlength="8"
+                        maxlength="20"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="togglePassword"
+                        aria-label="Show password"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+                <div class="password-strength">
+
+                    <div class="strength-bar">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </div>
+
+                    <span id="strengthText">
+                        Enter a password
+                    </span>
+
+                </div>
+
+            </div>
+
+
+            <!-- Confirm Password -->
+            <div class="input-field">
+
+                <label for="CSignupPassINP">
+                    Confirm Password
+                </label>
+
+                <div class="input-wrapper">
+
+                    <input
+                        type="password"
+                        id="CSignupPassINP"
+                        name="SCPassIn"
+                        autocomplete="new-password"
+                        placeholder="Re-enter your password"
+                        required
+                    >
+
+                    <button
+                        type="button"
+                        class="password-toggle"
+                        id="toggleConfirmPassword"
+                        aria-label="Show password"
+                    >
+                        Show
+                    </button>
+
+                </div>
+
+            </div>
+
+
+            <!-- Options -->
+            <div class="form-options">
+
+                <label class="check-control">
+
+                    <input
+                        type="checkbox"
+                        name="remember"
+                    >
+
+                    <span class="custom-check"></span>
+
+                    <span class="check-text">
+                        Remember me
+                    </span>
+
+                </label>
+
+
+                <label class="check-control">
+
+                    <input
+                        type="checkbox"
+                        id="terms"
+                        name="terms"
+                        required
+                    >
+
+                    <span class="custom-check"></span>
+
+                    <span class="check-text">
+                        I agree to the
+                        <a href="#">Terms & Conditions</a>
+                    </span>
+
+                </label>
+
+            </div>
+
+
+            <!-- Error -->
+            <div
+                id="passwordError"
+                class="error-text"
+                role="alert"
+                aria-live="polite"
+            ></div>
+
+
+            <!-- Submit -->
+            <button
+                type="submit"
+                id="SignupBTN"
+                class="submit-btn"
+            >
+
+                <span>Create Account</span>
+
+                <span class="button-arrow">
+                    →
+                </span>
+
+            </button>
+
+
+            <!-- Footer -->
+            <div class="form-footer">
+
+                <span>Already have an account?</span>
+
+                <a href="login.html">
+                    Sign in
+                </a>
+
+            </div>
+
+        </form>
+
+    </section>
+
+</main>
+
+<script src="../JS/signup.js"></script>
+
+</body>
+
+<script> 
+
+// Check if the URL contains an error parameter from the servlet redirection
+    window.addEventListener('DOMContentLoaded', () => {
+        const urlParams = new URLSearchParams(window.location.search);
+        if (urlParams.get('error') === 'taken') {
+            const errorSpan = document.getElementById('handleError');
+            const handleInput = document.getElementById('SignupHandleINP');
+            
+            // Display the message
+            errorSpan.innerText = "This handle or email is already taken. Please choose another.";
+            errorSpan.style.display = "block";
+            
+            // Optional: Give the input a red border to draw attention
+            if (handleInput) {
+                handleInput.style.borderColor = "#ff4d4d";
+            }
+        }
+    });
+
+</script>
+
+</html>

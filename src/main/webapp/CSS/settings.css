@@ -1,0 +1,368 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #3b82f6;
+    --blue-bright: #60a5fa;
+    --blue-soft: #93c5fd;
+
+    --white: #ffffff;
+    --text: #dbeafe;
+    --muted: #a8bad3;
+
+    --navbar-bg: rgba(3, 12, 28, 0.72);
+    --dropdown-bg: rgba(7, 20, 40, 0.94);
+    --border: rgba(147, 197, 253, 0.13);
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Inter",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--white);
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(3, 10, 24, 0.52),
+            rgba(8, 28, 62, 0.34),
+            rgba(3, 10, 24, 0.58)
+        ),
+        url("../Images/bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    position: relative;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    width: 100%;
+    height: 70px;
+
+    padding: 0 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 100;
+
+    background:
+        rgba(3, 12, 28, 0.72);
+
+    border-bottom:
+        1px solid
+        rgba(147, 197, 253, 0.13);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, 0.15);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo-area {
+    display: flex;
+    align-items: center;
+
+    gap: 0;
+}
+
+.logo-area img {
+    width: 58px;
+    height: 58px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(59, 130, 246, 0.30)
+        );
+}
+
+.logo-area h1 {
+    color: #ffffff;
+
+    font-size: 1.42rem;
+
+    font-weight: 700;
+
+    letter-spacing: -0.3px;
+}
+
+.main {
+    width: 100%;
+    max-width: 560px;
+    padding: 32px 36px;
+    background: linear-gradient(
+        145deg,
+        rgba(25, 34, 51, 0.88),
+        rgba(13, 19, 31, 0.88)
+    );
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    box-shadow:
+        0 25px 65px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.035);
+    backdrop-filter: blur(22px);
+    -webkit-backdrop-filter: blur(22px);
+    animation: cardAppear 0.55s ease both;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#BackBTN {
+    color: white;
+    text-decoration: none;
+    font-family: Arial;
+    align-self: flex-start;
+    background: rgba(86, 88, 97, 0.45);
+    padding: 10px;
+    width: 80px;
+    text-align: center;
+    border-radius: 10px;
+    transition: 0.5s;
+}
+
+#BackBTN:hover {
+    background: rgba(86, 88, 97, 0.25);
+}
+
+.main > .profilePicArea {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-self: flex-start;
+    width: 100%;
+    flex-direction: column;
+}
+
+@keyframes cardAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px) scale(0.985);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+/* Center the container */
+    .profile-container {
+      display: flex;
+      justify-content: center;
+      margin-top: 25px;
+      flex-direction: row;
+      gap: 20px;
+    }
+
+    /* Styling the clickable wrapper */
+    .avatar-upload {
+      position: relative;
+      cursor: pointer;
+      width: 150px;
+      height: 150px;
+    }
+
+    /* Make the image a perfect circle */
+    .avatar-upload img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover; /* Prevents stretching */
+      border: 3px solid #ccc;
+      transition: opacity 0.3s ease;
+    }
+
+    /* Subtle hover effect */
+    .avatar-upload:hover img {
+      opacity: 0.7;
+    }
+
+    /* HIDE THE UGLY DEFAULT INPUT BUTTON COMPLETELY */
+    .avatar-upload input[type="file"] {
+      display: none;
+    }
+    
+    .FnLn-Inputs {
+        width: 300px;
+        height: 150px;
+        display: flex; 
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        
+        > input {
+            width: 90%;
+            height: 45px;
+            padding-left: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 0;
+            background: linear-gradient(
+                145deg,
+                rgba(25, 34, 61, 1),
+                rgba(13, 19, 41, 1)
+            );
+            
+            outline: 0;
+            
+            color: #cccccc;
+        }
+    }
+    
+    .option-container {
+        width: 100%;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 50px;
+        gap: 20px;
+        
+        
+        > .changePassBTN, .saveChangesBTN {
+            width: 150px;
+            height: 40px;
+            border-radius: 10px;
+            border: 0;
+            cursor: pointer;
+            color: white;
+            background: #683e9c;
+            background: linear-gradient(142deg, rgba(104, 62, 156, 1) 0%, rgba(7, 34, 74, 1) 100%);
+            transition: 0.5s;
+        }
+        
+        > button:hover {
+            opacity: 0.6;
+        }
+       
+    }
+    
+    #SCB {
+        background: #3e819c;
+        background: linear-gradient(142deg, rgba(62, 129, 156, 1) 0%, rgba(20, 42, 74, 1) 100%);
+    }
+    
+    .passwordForm {
+        width: 100%;
+        max-width: 560px;
+        padding: 32px 36px;
+        background: linear-gradient(
+            145deg,
+            rgba(25, 34, 51, 0.88),
+            rgba(13, 19, 31, 0.88)
+        );
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        box-shadow:
+            0 25px 65px rgba(0, 0, 0, 0.45),
+            inset 0 1px 0 rgba(255, 255, 255, 0.035);
+        backdrop-filter: blur(22px);
+        -webkit-backdrop-filter: blur(22px);
+        animation: cardAppear 0.55s ease both;
+    
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        gap: 20px;
+        display: none;
+        
+        > h1 {
+            margin-bottom: 20px;
+        }
+        
+        > input {
+            width: 90%;
+            height: 45px;
+            padding-left: 10px;
+            font-size: 16px;
+            border-radius: 10px;
+            border: 0;
+            background: rgba(25, 34, 61, 1);
+           
+            outline: 0;
+            
+            color: #cccccc;
+        }
+        
+        > .buttons {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: row;
+            
+            > button {
+                width: 150px;
+                height: 40px;
+                border-radius: 10px;
+                border: 0;
+                cursor: pointer;
+                color: white;
+                background: #3e819c;
+                background: linear-gradient(142deg, rgba(62, 129, 156, 1) 0%, rgba(20, 42, 74, 1) 100%);
+                transition: 0.5s;
+                align-self: flex-start;
+                margin-left: 25px;
+                margin-top: 15px;
+            }
+        
+            > button:hover {
+                opacity: 0.6;
+            }
+            
+        }
+        
+    }
+    
+    #BBTN {
+        background: #683e9c;
+        background: linear-gradient(142deg, rgba(104, 62, 156, 1) 0%, rgba(7, 34, 74, 1) 100%);
+    }

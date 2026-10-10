@@ -1,0 +1,535 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #3b82f6;
+    --blue-bright: #60a5fa;
+    --blue-soft: #93c5fd;
+    --white: #ffffff;
+    --text: #dbeafe;
+    --muted: #a8bad3;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Inter",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--white);
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(3, 10, 24, 0.52),
+            rgba(8, 28, 62, 0.34),
+            rgba(3, 10, 24, 0.58)
+        ),
+        url("../Images/bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+
+    position: relative;
+}
+
+body::before {
+    content: "";
+
+    position: fixed;
+    width: 650px;
+    height: 650px;
+
+    left: 50%;
+    top: 48%;
+
+    transform: translate(-50%, -50%);
+
+    background:
+        radial-gradient(
+            circle,
+            rgba(37, 99, 235, 0.20) 0%,
+            rgba(37, 99, 235, 0.08) 35%,
+            transparent 70%
+        );
+
+    pointer-events: none;
+}
+
+.navbar {
+    width: 100%;
+    height: 70px;
+
+    padding: 0 5%;
+
+    display: flex;
+    align-items: center;
+
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    z-index: 100;
+
+    background:
+        rgba(3, 12, 28, 0.72);
+
+    border-bottom:
+        1px solid rgba(147, 197, 253, 0.13);
+
+    box-shadow:
+        0 8px 30px rgba(0, 0, 0, 0.15);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+.logo-area {
+    display: flex;
+    align-items: center;
+
+    gap: 0px;
+}
+
+.logo-area img {
+    width: 58px;
+    height: 58px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(59, 130, 246, 0.30)
+        );
+}
+
+.logo-area h1 {
+    color: #ffffff;
+
+    font-size: 1.42rem;
+
+    font-weight: 700;
+
+    letter-spacing: -0.3px;
+}
+
+.hero {
+    width: 100%;
+    height: 100vh;
+
+    padding:
+        70px 25px 25px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    width: 100%;
+    max-width: 900px;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    text-align: center;
+
+    animation:
+        heroAppear 0.7s ease both;
+}
+
+@keyframes heroAppear {
+    from {
+        opacity: 0;
+        transform: translateY(18px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+.hero-badge {
+    display: inline-flex;
+
+    align-items: center;
+    gap: 8px;
+
+    margin-bottom: 22px;
+
+    padding: 8px 14px;
+
+    border:
+        1px solid
+        rgba(96, 165, 250, 0.25);
+
+    border-radius: 999px;
+
+    background:
+        rgba(30, 64, 175, 0.18);
+
+    color: #bfdbfe;
+
+    font-size: 0.72rem;
+    font-weight: 500;
+
+    letter-spacing: 0.15px;
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.05);
+
+    backdrop-filter: blur(10px);
+}
+
+.badge-dot {
+    width: 7px;
+    height: 7px;
+
+    border-radius: 50%;
+
+    background:
+        #60a5fa;
+
+    box-shadow:
+        0 0 10px
+        rgba(96, 165, 250, 0.9);
+}
+
+
+.hero-content h2 {
+    max-width: 900px;
+
+    color: #ffffff;
+
+    font-size:
+        clamp(2.8rem, 6vw, 5.25rem);
+
+    line-height: 1.04;
+
+    font-weight: 800;
+
+    letter-spacing: -3px;
+
+    text-shadow:
+        0 4px 25px
+        rgba(0, 0, 0, 0.35);
+}
+
+.hero-content h2 span {
+    color: transparent;
+
+    background:
+        linear-gradient(
+            100deg,
+            #93c5fd 0%,
+            #60a5fa 42%,
+            #3b82f6 100%
+        );
+
+    background-clip: text;
+    -webkit-background-clip: text;
+
+    text-shadow: none;
+}
+
+
+.hero-description {
+    max-width: 570px;
+
+    margin-top: 21px;
+
+    color: #b8c8dd;
+
+    font-size: 0.95rem;
+
+    line-height: 1.7;
+
+    font-weight: 400;
+
+    text-shadow:
+        0 2px 12px
+        rgba(0, 0, 0, 0.35);
+}
+
+
+.auth-buttons {
+    display: flex;
+
+    align-items: center;
+    justify-content: center;
+
+    gap: 13px;
+
+    margin-top: 30px;
+}
+
+.auth-btn {
+    min-width: 138px;
+    height: 47px;
+
+    padding: 0 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    gap: 10px;
+
+    border-radius: 10px;
+
+    font-family: inherit;
+
+    font-size: 0.84rem;
+    font-weight: 600;
+
+    text-decoration: none;
+
+    transition:
+        transform 0.2s ease,
+        background 0.2s ease,
+        border-color 0.2s ease,
+        box-shadow 0.2s ease;
+}
+
+
+.login-btn {
+    color: #ffffff;
+
+    background:
+        linear-gradient(
+            135deg,
+            #3b82f6,
+            #2563eb
+        );
+
+    border:
+        1px solid
+        rgba(147, 197, 253, 0.25);
+
+    box-shadow:
+        0 8px 25px
+        rgba(37, 99, 235, 0.32);
+}
+
+.login-btn:hover {
+    transform: translateY(-2px);
+
+    background:
+        linear-gradient(
+            135deg,
+            #60a5fa,
+            #3b82f6
+        );
+
+    box-shadow:
+        0 13px 32px
+        rgba(37, 99, 235, 0.45);
+}
+
+.signup-btn {
+    color: #dbeafe;
+
+    background:
+        rgba(15, 38, 72, 0.52);
+
+    border:
+        1px solid
+        rgba(147, 197, 253, 0.22);
+
+    box-shadow:
+        inset 0 1px 0
+        rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(12px);
+}
+
+.signup-btn:hover {
+    transform: translateY(-2px);
+
+    background:
+        rgba(30, 64, 120, 0.65);
+
+    border-color:
+        rgba(147, 197, 253, 0.40);
+
+    box-shadow:
+        0 10px 28px
+        rgba(15, 23, 42, 0.35);
+}
+
+
+.arrow {
+    font-size: 1rem;
+
+    transition:
+        transform 0.2s ease;
+}
+
+.auth-btn:hover .arrow {
+    transform: translateX(3px);
+}
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        height: 64px;
+        padding: 0 20px;
+    }
+
+    .logo-area img {
+        width: 34px;
+        height: 34px;
+    }
+
+    .logo-area h1 {
+        font-size: 1rem;
+    }
+
+    .hero {
+        padding:
+            64px 22px 20px;
+    }
+
+    .hero-content h2 {
+        font-size:
+            clamp(2.5rem, 8vw, 4rem);
+
+        letter-spacing: -2px;
+    }
+
+    .hero-description {
+        max-width: 520px;
+        margin-top: 18px;
+        font-size: 0.88rem;
+    }
+
+    .auth-buttons {
+        margin-top: 26px;
+    }
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        height: 62px;
+    }
+
+    .hero {
+        padding:
+            62px 18px 18px;
+    }
+
+    .hero-badge {
+        padding: 6px 11px;
+        font-size: 0.66rem;
+        margin-bottom: 17px;
+    }
+
+    .hero-content h2 {
+        font-size:
+            clamp(2.25rem, 12vw, 3.2rem);
+
+        line-height: 1.04;
+
+        letter-spacing: -1.8px;
+    }
+
+    .hero-description {
+        margin-top: 17px;
+
+        font-size: 0.82rem;
+        line-height: 1.6;
+    }
+
+    .auth-buttons {
+        width: 100%;
+        margin-top: 25px;
+        gap: 10px;
+    }
+
+    .auth-btn {
+        min-width: 0;
+        width: 50%;
+        height: 44px;
+        font-size: 0.8rem;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PHONES
+   ========================================================= */
+
+@media (max-width: 350px) {
+
+    .hero-content h2 {
+        font-size: 2.05rem;
+        letter-spacing: -1.4px;
+    }
+
+    .hero-description {
+        font-size: 0.78rem;
+    }
+
+    .auth-buttons {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .auth-btn {
+        width: 100%;
+    }
+}
+
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}

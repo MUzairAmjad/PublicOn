@@ -1,0 +1,808 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --blue: #3b82f6;
+    --blue-bright: #60a5fa;
+    --blue-soft: #93c5fd;
+
+    --white: #ffffff;
+    --text: #dbeafe;
+    --muted: #a8bad3;
+
+    --navbar-bg: rgba(3, 12, 28, 0.72);
+    --dropdown-bg: rgba(7, 20, 40, 0.94);
+    --border: rgba(147, 197, 253, 0.13);
+}
+
+html,
+body {
+    width: 100%;
+    min-height: 100%;
+}
+
+body {
+    min-height: 100vh;
+
+    font-family:
+        "Inter",
+        system-ui,
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        sans-serif;
+
+    color: var(--white);
+
+    background:
+        linear-gradient(
+            115deg,
+            rgba(3, 10, 24, 0.52),
+            rgba(8, 28, 62, 0.34),
+            rgba(3, 10, 24, 0.58)
+        ),
+        url("../Images/bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+
+    position: relative;
+}
+
+
+/* =========================================================
+   NAVBAR
+   ========================================================= */
+
+.navbar {
+    width: 100%;
+    height: 70px;
+
+    padding: 0 5%;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    position: fixed;
+
+    top: 0;
+    left: 0;
+
+    z-index: 100;
+
+    background:
+        rgba(3, 12, 28, 0.72);
+
+    border-bottom:
+        1px solid
+        rgba(147, 197, 253, 0.13);
+
+    box-shadow:
+        0 8px 30px
+        rgba(0, 0, 0, 0.15);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo-area {
+    display: flex;
+    align-items: center;
+
+    gap: 0;
+}
+
+.logo-area img {
+    width: 58px;
+    height: 58px;
+
+    object-fit: contain;
+
+    filter:
+        drop-shadow(
+            0 0 10px
+            rgba(59, 130, 246, 0.30)
+        );
+}
+
+.logo-area h1 {
+    color: #ffffff;
+
+    font-size: 1.42rem;
+
+    font-weight: 700;
+
+    letter-spacing: -0.3px;
+}
+
+
+/* =========================================================
+   PROFILE AREA
+   ========================================================= */
+
+.profile-area {
+    position: relative;
+
+    display: flex;
+    align-items: center;
+}
+
+
+/* Profile button */
+
+.profile-button {
+    width: 42px;
+    height: 42px;
+
+    padding: 3px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+
+    border: 1px solid
+        rgba(147, 197, 253, 0.20);
+
+    border-radius: 50%;
+
+    background:
+        rgba(15, 38, 72, 0.60);
+
+    cursor: pointer;
+
+    transition:
+        border-color 0.2s ease,
+        box-shadow 0.2s ease,
+        transform 0.2s ease;
+}
+
+.profile-button:hover {
+    border-color:
+        rgba(96, 165, 250, 0.55);
+
+    box-shadow:
+        0 0 18px
+        rgba(59, 130, 246, 0.25);
+
+    transform: translateY(-1px);
+}
+
+
+/* Profile picture */
+
+.profile-button img {
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+}
+
+
+/* Small arrow */
+
+.profile-arrow {
+    position: absolute;
+
+    right: -17px;
+
+    color: #a8bad3;
+
+    font-size: 15px;
+
+    transition:
+        transform 0.2s ease;
+}
+
+
+/* =========================================================
+   PROFILE DROPDOWN
+   ========================================================= */
+
+.profile-dropdown {
+    position: absolute;
+
+    top: 55px;
+    right: 0;
+
+    width: 180px;
+
+    padding: 7px;
+
+    border:
+        1px solid
+        rgba(147, 197, 253, 0.16);
+
+    border-radius: 12px;
+
+    background:
+        rgba(7, 20, 40, 0.94);
+
+    box-shadow:
+        0 15px 40px
+        rgba(0, 0, 0, 0.35);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+
+    opacity: 0;
+    visibility: hidden;
+
+    transform:
+        translateY(-8px)
+        scale(0.97);
+
+    transition:
+        opacity 0.18s ease,
+        transform 0.18s ease,
+        visibility 0.18s ease;
+}
+
+
+/* Dropdown opened */
+
+.profile-dropdown.show {
+    opacity: 1;
+
+    visibility: visible;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+
+/* Dropdown links */
+
+.dropdown-item {
+    height: 42px;
+
+    padding: 0 12px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+
+    color: #dbeafe;
+
+    font-size: 0.82rem;
+
+    font-weight: 500;
+
+    text-decoration: none;
+
+    border-radius: 8px;
+
+    transition:
+        background 0.2s ease,
+        color 0.2s ease;
+}
+
+.dropdown-item span {
+    width: 20px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 1rem;
+}
+
+.dropdown-item:hover {
+    background:
+        rgba(59, 130, 246, 0.13);
+
+    color: #ffffff;
+}
+
+
+/* Divider */
+
+.dropdown-divider {
+    height: 1px;
+
+    margin: 5px 7px;
+
+    background:
+        rgba(147, 197, 253, 0.10);
+}
+
+
+/* Logout */
+
+.dropdown-item.logout {
+    color: #fca5a5;
+}
+
+.dropdown-item.logout:hover {
+    color: #fecaca;
+
+    background:
+        rgba(239, 68, 68, 0.10);
+}
+
+
+/* =========================================================
+   DASHBOARD
+   ========================================================= */
+
+.dashboard {
+    width: 100%;
+    min-height: 100vh;
+
+    padding-top: 70px;
+    display: flex;
+   
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+    z-index: 2;
+}
+
+.dashboard > h2 {
+    
+}
+
+/* =========================================
+   SIDE NAVIGATION
+   ========================================= */
+
+.sideNavBarWrapper {
+    position: fixed;
+    top: 40px;
+    left: 0;
+
+    width: 82px;
+    height: 100vh;
+    
+    display: flex;
+    align-items: center;
+
+    padding: 18px 12px;
+
+    z-index: 1000;
+}
+
+
+/* Main glass panel */
+.sideNav {
+    width: 100%;
+    height: 80%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 18px 10px;
+
+    background: rgba(10, 16, 28, 0.78);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 22px;
+
+    box-shadow:
+        0 20px 50px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.04);
+
+    backdrop-filter: blur(18px);
+    -webkit-backdrop-filter: blur(18px);
+}
+
+
+/* =========================================
+   NAV BUTTON
+   ========================================= */
+
+.sideNavButton {
+    position: relative;
+
+    width: 50px;
+    height: 50px;
+
+    margin: 6px 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border: 0;
+    border-radius: 15px;
+
+    background: transparent;
+
+    cursor: pointer;
+
+    transition:
+        background 0.25s ease,
+        transform 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+
+/* SVG icons */
+
+.sideNavButton svg {
+    width: 23px;
+    height: 23px;
+
+    fill: none;
+    stroke: #8e9bb0;
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+
+    transition:
+        stroke 0.25s ease,
+        filter 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+/* =========================================
+   HOVER
+   ========================================= */
+
+.sideNavButton:hover {
+    background: rgba(79, 140, 255, 0.10);
+
+    transform: translateY(-2px);
+}
+
+
+.sideNavButton:hover svg {
+    stroke: #6fa2ff;
+
+    filter:
+        drop-shadow(0 0 5px rgba(79, 140, 255, 0.55));
+
+}
+
+
+/* =========================================
+   ACTIVE BUTTON
+   ========================================= */
+
+.sideNavButton.active {
+    background:
+        linear-gradient(
+            135deg,
+            rgba(79, 140, 255, 0.20),
+            rgba(79, 140, 255, 0.07)
+        );
+
+    box-shadow:
+        inset 0 0 0 1px rgba(79, 140, 255, 0.18),
+        0 0 18px rgba(79, 140, 255, 0.08);
+}
+
+
+.sideNavButton.active svg {
+    stroke: #4f8cff;
+
+    filter:
+        drop-shadow(0 0 7px rgba(79, 140, 255, 0.65));
+}
+
+
+/* Small active indicator */
+
+.sideNavButton.active::before {
+    content: "";
+
+    position: absolute;
+
+    left: -13px;
+
+    width: 3px;
+    height: 22px;
+
+    border-radius: 0 4px 4px 0;
+
+    background: #4f8cff;
+
+    box-shadow:
+        0 0 10px rgba(79, 140, 255, 0.8);
+}
+
+
+/* =========================================
+   TOOLTIP
+   ========================================= */
+
+.sideNavButton::after {
+    content: attr(title);
+
+    position: absolute;
+
+    left: 64px;
+    top: 50%;
+
+    transform:
+        translateY(-50%)
+        translateX(-5px);
+
+    padding: 7px 11px;
+
+    white-space: nowrap;
+
+    font-family: "Inter", sans-serif;
+    font-size: 12px;
+    font-weight: 500;
+
+    color: #e8eef8;
+
+    background: rgba(12, 18, 30, 0.95);
+
+    border: 1px solid rgba(255, 255, 255, 0.08);
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 8px 25px rgba(0, 0, 0, 0.35);
+
+    opacity: 0;
+    visibility: hidden;
+
+    pointer-events: none;
+
+    transition:
+        opacity 0.2s ease,
+        transform 0.2s ease;
+}
+
+
+.sideNavButton:hover::after {
+    opacity: 1;
+    visibility: visible;
+
+    transform:
+        translateY(-50%)
+        translateX(0);
+}
+
+
+/* =========================================
+   DIVIDER
+   ========================================= */
+
+.sideNavDivider {
+    width: 32px;
+    height: 1px;
+
+    margin: auto 0 10px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.12),
+            transparent
+        );
+}
+
+
+/* =========================================
+   PROFILE BUTTON
+   ========================================= */
+
+.profileNavButton {
+    padding: 3px;
+
+    border-radius: 50%;
+}
+
+
+.profileNavButton img {
+    width: 44px;
+    height: 44px;
+
+    display: block;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+
+    border: 2px solid rgba(79, 140, 255, 0.35);
+
+    box-shadow:
+        0 0 0 3px rgba(79, 140, 255, 0.05),
+        0 0 14px rgba(79, 140, 255, 0.10);
+
+    transition:
+        border-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.25s ease;
+}
+
+
+.profileNavButton:hover img {
+    border-color: rgba(79, 140, 255, 0.8);
+
+    box-shadow:
+        0 0 0 3px rgba(79, 140, 255, 0.08),
+        0 0 20px rgba(79, 140, 255, 0.25);
+
+    transform: scale(1.05);
+}
+
+
+/* =========================================
+   RESPONSIVE
+   ========================================= */
+
+@media (max-width: 700px) {
+
+    .sideNavBarWrapper {
+        width: 100%;
+        height: 72px;
+
+        top: auto;
+        bottom: 0;
+
+        padding: 8px 12px;
+    }
+
+
+    .sideNav {
+        height: 100%;
+
+        flex-direction: row;
+        justify-content: space-around;
+
+        padding: 0 8px;
+
+        border-radius: 18px;
+    }
+
+
+    .sideNavButton {
+        width: 45px;
+        height: 45px;
+
+        margin: 0;
+    }
+
+
+    .sideNavButton.active::before {
+        left: 50%;
+        top: -9px;
+
+        width: 20px;
+        height: 3px;
+
+        transform: translateX(-50%);
+
+        border-radius: 0 0 4px 4px;
+    }
+
+
+    .sideNavButton::after {
+        display: none;
+    }
+
+
+    .sideNavDivider {
+        width: 1px;
+        height: 28px;
+
+        margin: 0 3px;
+    }
+
+
+    .profileNavButton img {
+        width: 40px;
+        height: 40px;
+    }
+}
+
+
+
+
+/* =========================================================
+   TABLET
+   ========================================================= */
+
+@media (max-width: 700px) {
+
+    .navbar {
+        height: 64px;
+
+        padding: 0 20px;
+    }
+
+    .logo-area img {
+        width: 34px;
+        height: 34px;
+    }
+
+    .logo-area h1 {
+        font-size: 1rem;
+    }
+
+    .profile-button {
+        width: 38px;
+        height: 38px;
+    }
+
+    .profile-arrow {
+        right: -15px;
+    }
+
+    .profile-dropdown {
+        top: 51px;
+    }
+
+    .dashboard {
+        padding-top: 64px;
+    }
+}
+
+
+/* =========================================================
+   PHONE
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+    .navbar {
+        height: 62px;
+
+        padding: 0 18px;
+    }
+
+    .logo-area img {
+        width: 34px;
+        height: 34px;
+    }
+
+    .logo-area h1 {
+        font-size: 0.95rem;
+    }
+
+    .profile-button {
+        width: 36px;
+        height: 36px;
+    }
+
+    .profile-dropdown {
+        width: 165px;
+
+        top: 48px;
+    }
+
+    .dashboard {
+        padding-top: 62px;
+    }
+}
+
+/* =========================================================
+   REDUCED MOTION
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    * {
+        transition-duration: 0.01ms !important;
+    }
+}
+
