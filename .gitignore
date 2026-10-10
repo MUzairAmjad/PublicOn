@@ -1,0 +1,27 @@
+# Compiled Java class files
+*.class
+
+# Log files
+*.log
+
+# Package Files #
+*.war
+*.ear
+*.zip
+*.tar.gz
+
+# Tomcat / Application Server directories
+target/
+bin/
+work/
+temp/
+logs/
+.extract/
+
+# IDE Specific metadata
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+.vscode/
